@@ -1,110 +1,601 @@
-html {
-    font-family: sans-serif;
-}
+/* https://www.flaticon.com/free-icon/dog_2965100 */
+/* =================
+body
+================= */
+@import url('https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap');
+@media screen {
+  /* =================
+  0. General
+  ================= */
+  html {
+    font-family: New Tegomin, sans-serif;
+  }
 
-body{
-    overflow-y: hidden;
-}
+  /* scrollbar styling */
+  /* https://www.digitalocean.com/community/tutorials/css-scrollbars */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: black white;
+  }
 
-h1{
+  *::-webkit-scrollbar {
+    width: 0.75rem;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: white;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 1.25rem;
+    border: 0.19rem solid white;
+  }
+  /* end of scrollbar styling */
+
+  /* =================
+  1. header
+  ================= */
+  header {
+    height: 14vh;
+  }
+
+  #header_title {
+    margin-top: 0;
+    margin-bottom: 0;
     text-align: center;
-    background-color: aliceblue;
-    margin: 0px;
-    padding: 3vh 0px;
-    height: 5vh;
-}
+    font-size: 3rem;
+    right: 20%;
+  }
 
-.app {
-    height: 92vh;
+  #header_subtitle {
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 764px) {
+    header {
+      height: 6.25rem;
+    }
+
+    #header_title {
+      font-size: 2.5rem;
+    }
+  }
+
+  /* =================
+  2. body
+  ================= */
+  body {
+    margin: 0;
+    height: 78vh;
+    width: 100vw;
     display: grid;
+    grid-template-areas:
+      'chooser details'
+      'footer footer';
     grid-template-columns: 1fr 3fr;
-}
+  }
 
-.chooser, .details {
-    box-shadow: 3px 3px 6px rgba(0,0,0,.5);
-}
+  @media screen and (max-width: 764px) {
+    body {
+      grid-template-areas:
+        'chooser'
+        'details'
+        'footer';
+      grid-template-rows: 1fr 3fr 1fr;
+    }
+  }
 
-.chooser {
-    grid-column: 1 / 2;
+  /* =================
+  2-1. Chooser
+  ================= */
+  .chooser,
+  .details,
+  footer {
+    box-shadow: 0.1875rem 0.1875rem 0.375rem rgba(0, 0, 0, 0.5);
+  }
+
+  nav {
+    background-color: white;
+  }
+
+  .chooser {
+    grid-area: chooser;
     width: 20vw;
     overflow-y: auto;
-    margin-left: 10px;
-    margin-top: 10px;
-    margin-right: 20px;
-    height: 83vh;
-}
+    margin-left: 0.625rem;
+    margin-top: 0.625rem;
+  }
 
-#chooserTitle{
-    padding-left: 5px;
-}
+  @media screen and (max-width: 996px) {
+    .chooser {
+      min-width: 10.4375rem;
+    }
+  }
 
-#chooserItems{
-    padding-left: 10px;
-}
+  @media screen and (max-width: 764px) {
+    .chooser {
+      overflow-y: visible;
+      margin-left: 0;
+      width: 100vw;
+      height: 3rem;
+      /* border: 1px solid black; */
+    }
+  }
 
-#chooserButton{
+  .chooser button:hover {
+    scale: 1.1;
+    color: rgb(255, 60, 0);
+  }
+
+  .chooser button {
+    font-family: New Tegomin, sans-serif;
     background-color: Transparent;
     border: none;
-    font-size: 3vh;
-    padding: 0 2.5px;
+    font-size: 1.2rem;
+    padding: 0 0.15625rem;
     cursor: pointer;
-}
+  }
 
-.chooser ul {
+  #chooser_title {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding-left: 0.75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    font-weight: bolder;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  @media screen and (orientation: portrait) {
+    .chooser button {
+      font-size: 1.8vh;
+    }
+  }
+
+  @media screen and (max-width: 996px) {
+    .chooser button {
+      font-family: New Tegomin, sans-serif;
+      background-color: Transparent;
+      border: none;
+      font-size: 1rem;
+      padding: 0 0.15625rem;
+      cursor: pointer;
+    }
+    #chooser_title {
+      font-size: 1.5rem;
+    }
+  }
+
+  #chooser_dog-list {
+    padding-left: 1.5rem;
+    padding-right: 0.625rem;
+  }
+
+  .chooser ul {
     list-style-type: none;
     padding: 0;
-}
+  }
 
-.chooser button:hover {
-    background-color: papayawhip;
-}
+  .nav-toggle {
+    display: none;
+  }
 
-.chooser button:active {
-    background-color: darkturquoise;
-}
+  /* =================
+  2-2. Details
+  ================= */
+  #details_dog-breed {
+    height: 6vh;
+    padding-left: 1rem;
+  }
 
-.details{
-    margin-top: 10px;
-    grid-column: 2 / 2;
+  .details {
+    grid-area: details;
+    margin-top: 0.625rem;
+    /* grid-column: 2 / 2; */
     overflow-y: auto;
-    height: 83vh;
-    padding-left: 10px;
-    width: 75vw;
-}
+    height: 75vh;
+    padding-left: 0.625rem;
+    width: 78vw;
+  }
 
-.images {
+  @media screen and (max-width: 996px) {
+    .details {
+      width: 77vw;
+      margin-left: 0rem;
+      /* margin: 0 auto; */
+    }
+  }
+
+  @media screen and (max-width: 764px) {
+    .details {
+      margin-left: 0;
+      padding-left: 0.1rem;
+      width: 99.5vw;
+    }
+  }
+
+  .details_grid {
+    display: grid;
+    grid-template-areas:
+      'gallery form'
+      'gallery form';
+  }
+
+  @media screen and (max-width: 996px) {
+    .details_grid {
+      display: grid;
+      grid-template-areas:
+        'gallery '
+        'form ';
+    }
+  }
+
+  @media screen and (max-width: 764px) {
+    #chooser_title {
+      padding-left: 3.5rem;
+    }
+
+    /* changed this from the tutorial video to
+     allow it to gain focus, making it tabbable */
+    .nav-toggle {
+      position: absolute !important;
+      top: -9999px !important;
+      left: -9999px !important;
+    }
+
+    .nav-toggle-label {
+      position: absolute;
+      top: 17vh;
+      left: 0;
+      margin-left: 1em;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-toggle-label span,
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+      display: block;
+      background: black;
+      height: 2px;
+      width: 2em;
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+      content: '';
+      position: absolute;
+    }
+
+    .nav-toggle-label span::before {
+      bottom: 7px;
+    }
+
+    .nav-toggle-label span::after {
+      top: 7px;
+    }
+
+    nav {
+      position: absolute;
+      text-align: left;
+      /* width: 100%; */
+      transform: scale(1, 0);
+      transform-origin: top;
+      transition: transform 400ms ease-in-out;
+      height: 100vw;
+      overflow-y: scroll;
+      background-color: #9c9c9c;
+      z-index: 99;
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav li {
+      margin-bottom: 1em;
+      /* margin-left: 1em; */
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 150ms ease-in-out;
+    }
+
+    nav a:hover {
+      color: #000;
+    }
+
+    .nav-toggle:checked ~ nav {
+      transform: scale(1, 1);
+    }
+
+    .nav-toggle:checked ~ nav a {
+      /* opacity: 1; */
+      /* transition: opacity 250ms ease-in-out 250ms; */
+    }
+  }
+
+  /* =================
+  2-2. 1)Dog Gallery
+  ================= */
+
+  .details_dog-gallery {
+    grid-area: gallery;
+    position: relative;
+    width: 38vw;
+  }
+
+  @media screen and (max-width: 996px) {
+    .details_dog-gallery {
+      grid-area: gallery;
+      width: 75vw;
+    }
+  }
+
+  .details_dog-gallery_main_container,
+  .details_dog-gallery_sub_container {
+    border: 2px solid black;
+    box-shadow: 0.1875rem 0.1875rem 0.375rem rgba(0, 0, 0, 0.5);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .details_dog-gallery_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .details_dog-gallery_main img {
+    height: auto;
+    width: auto;
+    max-width: 15rem;
+    max-height: 15rem;
+  }
+
+  .details_dog-gallery_sub {
+    box-shadow: inset 0 0 0.5rem #000000;
     list-style-type: none;
-    background-color: rgb(230,230,230);
-    width: 100%;
+    width: 30vw;
     overflow-x: scroll;
     white-space: nowrap;
-}
+    min-height: 5rem;
+    display: inline-flex;
+    align-items: center;
+    margin: 0 1vw;
+  }
 
-.images img {
-    height: auto; 
-    width: auto; 
-    max-width: 150px; 
-    max-height: 150px;
-}
+  @media screen and (max-width: 996px) {
+    .details_dog-gallery_sub {
+      width: 65vw;
+    }
+  }
 
-.images li{
+  .details_dog-gallery_sub_container {
+    padding-bottom: 1rem;
+  }
+
+  .details_dog-gallery_main_caption,
+  .details_dog-gallery_sub_caption {
+    text-align: center;
+  }
+
+  .details_dog-gallery_sub img {
+    height: auto;
+    width: auto;
+    max-width: 4rem;
+    max-height: 4rem;
+    position: relative;
+    z-index: -1;
+  }
+
+  .details_dog-gallery_sub li {
     list-style: none;
     display: inline;
-}
+    margin-right: 0.5rem;
+  }
 
-ul{
-    padding-left: 0px;
-}
+  #dogNumberOfImagesController {
+    display: inline-flex;
+    vertical-align: top;
+  }
 
-.comments li {
-    list-style-type: none;
-    padding: .5rem;
-    margin: .5rem;
-    border: 1px solid rgb(221, 213, 236);
-    background-color: rgb(221, 213, 236);
-}
+  input[type='number'] {
+    width: 4vw;
 
-textarea, label {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 1rem;
+    border: 1px solid #9c9c9c;
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    border: none;
+  }
+
+  label {
+    display: inline;
+  }
+
+  img {
+    border-radius: 0.5rem;
+  }
+
+  .details_dog-gallery_sub > ul {
+    padding-left: 0.5rem;
+  }
+
+  label {
     display: block;
-    width: 50%;
+    /* width: 50%; */
+  }
+
+  input {
+    display: inline;
+  }
+
+  @media screen and (max-width: 764px) {
+    .details_dog-gallery {
+      width: 96.5vw;
+    }
+
+    .details_dog-gallery_sub {
+      width: 80vw;
+    }
+
+    .comments_container {
+      width: 94vw;
+    }
+
+    input[type='number'] {
+      width: 8vw;
+    }
+  }
+
+  /* =================
+  2-2. 2)Comment
+  ================= */
+  .detailforms {
+    grid-area: form;
+    /* grid-column: 2 / 2; */
+    width: 38vw;
+    border: 2px solid black;
+    box-shadow: 0.1875rem 0.1875rem 0.375rem rgba(0, 0, 0, 0.5);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 996px) {
+    .detailforms {
+      grid-area: form;
+      /* grid-row: 2 / 2; */
+      /* min-width: 15rem; */
+      width: 75vw;
+      min-width: calc(100vw - 20rem);
+      /* width: calc(70vw - 20rem); */
+      /* min-width: 60vw; */
+      /* border: 2px solid black;
+      box-shadow: 0.1875rem 0.1875rem 0.375rem rgba(0, 0, 0, 0.5);
+      border-radius: 0.5rem;
+      margin-bottom: 1rem; */
+    }
+  }
+  @media screen and (max-width: 764px) {
+    .detailforms {
+      width: 96vw;
+    }
+  }
+
+  .comments_container {
+    width: 36vw;
+  }
+
+  @media screen and (max-width: 996px) {
+    .comments_container {
+      width: 73vw;
+    }
+  }
+  @media screen and (max-width: 764px) {
+    .comments_container {
+      width: 94vw;
+    }
+  }
+
+  .comments,
+  .comment-writing-container {
+    /* border: 1px solid black;
+  border-radius: 0.5rem; */
+    margin-bottom: 1rem;
+  }
+
+  .comments_container {
+    padding: 0.2rem 0;
+    box-shadow: inset 0 0 0.5rem #000000;
+    margin: 0 0.5rem;
+    min-height: 37vh;
+    max-height: 45vh;
+    overflow-y: scroll;
+  }
+
+  .comments_container > ul {
+    padding-left: 0;
+  }
+
+  .comments_container > ul > li {
+    background-color: whitesmoke;
+  }
+
+  .comment-writing-container {
+    height: 25vh;
+  }
+
+  .comments_caption,
+  .comment-writing-container_caption {
+    text-align: center;
+  }
+
+  .comments li {
+    list-style-type: none;
+    /* padding: 0.5rem; */
+    margin: 0.5rem;
+    border: 1px solid black;
+    background-color: white;
+  }
+
+  #submit-button {
+    border: none;
+    background-color: green;
+    color: white;
+    float: right;
+    margin-top: 0.5rem;
+    margin-right: 2%;
+  }
+
+  textarea {
+    width: 95%;
+    display: block;
+    margin: 0 auto;
+    background-color: aliceblue;
+  }
+
+  /* =================
+  3. footer
+  ================= */
+
+  footer {
+    grid-area: footer;
+    text-align: center;
+    /* position: sticky; */
+    /* bottom: 0; */
+    /* background-color: bisque; */
+    margin-top: 0.5rem;
+    margin-bottom: 0rem;
+    /* margin-bottom: 4rem; */
+    height: 5vh;
+    margin-left: 0.625rem;
+  }
+
+  footer p {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+  }
 }
